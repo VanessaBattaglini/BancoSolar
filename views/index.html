@@ -200,7 +200,7 @@
       const { data } = await axios.put(
         `http://localhost:3000/usuario?id=${id}`,
         {
-          name,
+          nombre: name,
           balance,
         }
       );
@@ -289,6 +289,7 @@
     const response = await fetch(`http://localhost:3000/usuario?id=${id}`, {
       method: "DELETE",
     });
+    alet(`Usuario con id:${id} eliminado`)
     getUsuarios();
   };
 

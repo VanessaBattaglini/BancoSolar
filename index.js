@@ -5,6 +5,7 @@ process.loadEnvFile();
 import router from './routes/router.js';
 
 //Middlewares
+app.use(express.json())
 app.use('/', router);
 
 

@@ -4,7 +4,7 @@ const router = express.Router();
 import path from 'path';
 const __dirname = import.meta.dirname;
 import pool from "../config/db.js";
-import { getDate, addUserQuery } from "../controllers/crud.js";
+import { getDate, addUserQuery, getUserQuery, editUserQuery, deleteUserQuery } from "../controllers/crud.js";
 
 //Ruta raíz
 
@@ -24,13 +24,38 @@ router.post('/usuario', async (req, res) => {
         const { nombre, balance } = req.body;
         const datos = [nombre, balance];
         const result = await addUserQuery(datos);
-
+        res.status(201).send(result.rows)
     } catch (error) {
-        console.log(error.status)
+        res.status(500).send(error)
     }
-    
-    
-})
+});
+router.get('/usuarios', async (req, res) => {
+    try {
+        const result = await getUserQuery();
+        res.status(201).send(result.rows);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+router.put('/usuario', async (req, res) => {
+    try {
+        const { id } = req.query;
+        const { nombre, balance } = req.body;
+        const result = await editUserQuery(nombre, balance, id);
+        res.status(201).send(result.rows);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+router.delete('/usuario', async (req, res) => {
+    try {
+        const { id } = req.query;
+        const result = await deleteUserQuery(id);
+        res.status(201).send(result.rows);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 //Ruta genérica
 router.get('*', (req, res) => {
