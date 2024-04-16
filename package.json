@@ -1,0 +1,17 @@
+{
+  "name": "bancosolar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "server": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "Smilling Battaglini",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  }
+}
