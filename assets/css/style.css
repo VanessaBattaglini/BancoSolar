@@ -1,0 +1,15 @@
+body {
+background: #f5f79f;
+font-family: Hakra Petch;
+}
+form {
+padding: 15px;
+background: #9fc8f1;
+border-radius: 10px;
+}
+.transferencias {
+    background-color: rgb(248, 207, 207);
+}
+.table {
+    background-color: #c9f9d6;
+}
